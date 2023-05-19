@@ -69,23 +69,32 @@
       var bkg = document.getElementById("bkg").value;
       var pkgs = document.getElementById("pkgs").value;
 
-      // Generate printable content
-      var printableContent = '';
+      // Create a new HTML element to hold the printable content
+      var printableElement = document.createElement("div");
 
+      // Add the entered form values to the printable element
       if (vsl) {
-        printableContent += `<p><strong>VSL:</strong> ${vsl}</p>`;
+        var vslElement = document.createElement("p");
+        vslElement.innerHTML = "<strong>VSL:</strong> " + vsl;
+        printableElement.appendChild(vslElement);
       }
 
       if (port) {
-        printableContent += `<p><strong>PORT:</strong> ${port}</p>`;
+        var portElement = document.createElement("p");
+        portElement.innerHTML = "<strong>PORT:</strong> " + port;
+        printableElement.appendChild(portElement);
       }
 
       if (bkg) {
-        printableContent += `<p><strong>BKG#:</strong> ${bkg}</p>`;
+        var bkgElement = document.createElement("p");
+        bkgElement.innerHTML = "<strong>BKG#:</strong> " + bkg;
+        printableElement.appendChild(bkgElement);
       }
 
       if (pkgs) {
-        printableContent += `<p><strong>PKGS:</strong> ${pkgs}</p>`;
+        var pkgsElement = document.createElement("p");
+        pkgsElement.innerHTML = "<strong>PKGS:</strong> " + pkgs;
+        printableElement.appendChild(pkgsElement);
       }
 
       // Create a new html2pdf instance with A5 size in landscape orientation
@@ -94,7 +103,7 @@
         filename: 'printable_form.pdf',
         html2canvas: { dpi: 300, letterRendering: true },
         jsPDF: { format: 'a5', orientation: 'landscape' }
-      }).from(printableContent).save();
+      }).from(printableElement).save();
     }
   </script>
 </body>

@@ -51,6 +51,17 @@
       .printable-layout h2 {
         display: none; /* Hide headers */
       }
+
+      @page {
+        size: A5;
+        margin: 0;
+      }
+
+      @media print {
+        .no-print {
+          display: none;
+        }
+      }
     }
   </style>
 </head>

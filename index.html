@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Printable Form</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
   <style>
     /* CSS styles for the form */
     .form-container {
@@ -78,16 +78,10 @@
         <p><strong>PKGS:</strong> ${pkgs}</p>
       `;
 
-      // Create a new jsPDF instance
-      var doc = new jsPDF();
-
-      // Convert the printable content to PDF
-      doc.html(printableContent, {
-        callback: function () {
-          // Save the PDF document
-          doc.save("printable_form.pdf");
-        },
-      });
+      // Create a new html2pdf instance
+      var element = document.createElement("div");
+      element.innerHTML = printableContent;
+      html2pdf().from(element).save();
     }
   </script>
 </body>

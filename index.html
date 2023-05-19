@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +31,16 @@
       padding: 10px 20px;
       border: none;
       cursor: pointer;
+    }
+
+    /* CSS styles for the printable layout */
+    @media print {
+      body {
+        width: 200mm; /* A5 paper width */
+        height: 150mm; /* A5 paper height */
+        margin: 0;
+        padding: 20mm; /* Margin for printable content */
+      }
     }
   </style>
 </head>
@@ -81,3 +90,4 @@
   </script>
 </body>
 </html>
+

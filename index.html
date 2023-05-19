@@ -74,27 +74,27 @@
 
       // Add the entered form values to the printable element
       if (vsl) {
-        var vslElement = document.createElement("p");
-        vslElement.innerHTML = "<strong>VSL:</strong> " + vsl;
-        printableElement.appendChild(vslElement);
+        var vslValueElement = document.createElement("p");
+        vslValueElement.innerText = vsl;
+        printableElement.appendChild(vslValueElement);
       }
 
       if (port) {
-        var portElement = document.createElement("p");
-        portElement.innerHTML = "<strong>PORT:</strong> " + port;
-        printableElement.appendChild(portElement);
+        var portValueElement = document.createElement("p");
+        portValueElement.innerText = port;
+        printableElement.appendChild(portValueElement);
       }
 
       if (bkg) {
-        var bkgElement = document.createElement("p");
-        bkgElement.innerHTML = "<strong>BKG#:</strong> " + bkg;
-        printableElement.appendChild(bkgElement);
+        var bkgValueElement = document.createElement("p");
+        bkgValueElement.innerText = bkg;
+        printableElement.appendChild(bkgValueElement);
       }
 
       if (pkgs) {
-        var pkgsElement = document.createElement("p");
-        pkgsElement.innerHTML = "<strong>PKGS:</strong> " + pkgs;
-        printableElement.appendChild(pkgsElement);
+        var pkgsValueElement = document.createElement("p");
+        pkgsValueElement.innerText = pkgs;
+        printableElement.appendChild(pkgsValueElement);
       }
 
       // Create a new html2pdf instance with A5 size in landscape orientation

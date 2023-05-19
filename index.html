@@ -70,12 +70,23 @@
       var pkgs = document.getElementById("pkgs").value;
 
       // Generate printable content
-      var printableContent = `
-        <p><strong>VSL:</strong> ${vsl}</p>
-        <p><strong>PORT:</strong> ${port}</p>
-        <p><strong>BKG#:</strong> ${bkg}</p>
-        <p><strong>PKGS:</strong> ${pkgs}</p>
-      `;
+      var printableContent = '';
+
+      if (vsl) {
+        printableContent += `<p><strong>VSL:</strong> ${vsl}</p>`;
+      }
+
+      if (port) {
+        printableContent += `<p><strong>PORT:</strong> ${port}</p>`;
+      }
+
+      if (bkg) {
+        printableContent += `<p><strong>BKG#:</strong> ${bkg}</p>`;
+      }
+
+      if (pkgs) {
+        printableContent += `<p><strong>PKGS:</strong> ${pkgs}</p>`;
+      }
 
       // Create a new html2pdf instance with A5 size in landscape orientation
       html2pdf().set({

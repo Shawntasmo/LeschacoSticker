@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Printable Form</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
   <style>
     /* CSS styles for the form */
     .form-container {
@@ -31,37 +32,6 @@
       padding: 10px 20px;
       border: none;
       cursor: pointer;
-    }
-
-    /* CSS styles for the printable layout */
-    @media print {
-      body {
-        width: 148mm; /* A5 sticker width */
-        height: 210mm; /* A5 sticker height */
-        margin: 0;
-        padding: 0;
-      }
-
-      .printable-layout {
-        width: 100%;
-        height: 100%;
-        padding: 20mm; /* Margin for printable content */
-      }
-
-      .printable-layout h2 {
-        display: none; /* Hide headers */
-      }
-
-      @page {
-        size: A5;
-        margin: 0;
-      }
-
-      @media print {
-        .no-print {
-          display: none;
-        }
-      }
     }
   </style>
 </head>
@@ -99,21 +69,25 @@
       var bkg = document.getElementById("bkg").value;
       var pkgs = document.getElementById("pkgs").value;
 
-      // Generate printable layout
-      var printableLayout = `
-        <div class="printable-layout">
-          <p><strong>VSL:</strong> ${vsl}</p>
-          <p><strong>PORT:</strong> ${port}</p>
-          <p><strong>BKG#:</strong> ${bkg}</p>
-          <p><strong>PKGS:</strong> ${pkgs}</p>
-        </div>
+      // Generate printable content
+      var printableContent = `
+        <h2>Printable Form Data</h2>
+        <p><strong>VSL:</strong> ${vsl}</p>
+        <p><strong>PORT:</strong> ${port}</p>
+        <p><strong>BKG#:</strong> ${bkg}</p>
+        <p><strong>PKGS:</strong> ${pkgs}</p>
       `;
 
-      // Display/print the layout (replace with your desired method)
-      var printWindow = window.open('', '_blank');
-      printWindow.document.open();
-      printWindow.document.write(printableLayout);
-      printWindow.document.close();
+      // Create a new jsPDF instance
+      var doc = new jsPDF();
+
+      // Convert the printable content to PDF
+      doc.html(printableContent, {
+        callback: function () {
+          // Save the PDF document
+          doc.save("printable_form.pdf");
+        },
+      });
     }
   </script>
 </body>

@@ -78,8 +78,13 @@
         <p><strong>PKGS:</strong> ${pkgs}</p>
       `;
 
-      // Create a new html2pdf instance with A5 size
-      html2pdf().set({ pagebreak: { mode: 'avoid-all', before: '#div1' }, filename: 'printable_form.pdf', html2canvas: { dpi: 300, letterRendering: true }, jsPDF: { format: 'a5', orientation: 'portrait' } }).from(printableContent).save();
+      // Create a new html2pdf instance with A5 size in landscape orientation
+      html2pdf().set({
+        pagebreak: { mode: 'avoid-all', before: '#div1' },
+        filename: 'printable_form.pdf',
+        html2canvas: { dpi: 300, letterRendering: true },
+        jsPDF: { format: 'a5', orientation: 'landscape' }
+      }).from(printableContent).save();
     }
   </script>
 </body>
